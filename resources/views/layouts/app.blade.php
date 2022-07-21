@@ -70,7 +70,7 @@
 
                     <!-- Main -->
                     <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="{{ route('dashboard') }}" class="nav-link">
                             <i class="icon-home4"></i>
                             <span>
 									Bảng điều khiển
@@ -79,6 +79,9 @@
                     </li>
                     <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Sản phẩm</div> <i class="icon-menu" title="Main"></i></li>
                     <li class="nav-item"><a href="../../../RTL/default/full/index.html" class="nav-link"><i class="fa far fa-folders"></i> <span>Sản phẩm</span></a></li>
+
+                    <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Danh mục</div> <i class="icon-menu" title="Main"></i></li>
+                    <li class="nav-item"><a href="{{ route('admin.categories.index') }}" class="nav-link"><i class="fa far fa-folders"></i> <span>Danh mục</span></a></li>
                     <!-- /main -->
 
                 </ul>
@@ -95,7 +98,7 @@
     <!-- Main content -->
     <div class="content-wrapper">
 
-        <div class="navbar navbar-expand-lg navbar-light"><div class="d-flex flex-1 d-lg-none"><button class="navbar-toggler sidebar-mobile-main-toggle" type="button"><i class="icon-transmission"></i></button></div><div class="navbar-collapse collapse flex-lg-1 order-2 order-lg-1" id="navbar-search"><div class="navbar-search d-flex align-items-center py-2 py-lg-0"></div></div><div class="d-flex justify-content-end align-items-center flex-1 flex-lg-0 order-1 order-lg-2"><ul class="navbar-nav flex-row"><li class="nav-item nav-item-dropdown-lg dropdown dropdown-user"><a href="#" class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle" data-toggle="dropdown"><img src="https://ui-avatars.com/api/?name=L+M&amp;color=7F9CF5&amp;background=EBF4FF" class="rounded-pill mr-lg-2" height="34" alt=""><span class="d-none d-lg-inline-block">Leo Messi</span></a><div class="dropdown-menu dropdown-menu-right"><a href="https://vulcano.azlink.vn/backend/profile" class="dropdown-item"><i class="icon-user-plus"></i> Hồ sơ</a><div class="dropdown-divider"></div><form method="POST" action="https://vulcano.azlink.vn/logout"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <a href="http://127.0.0.1:8000/logout" class="dropdown-item" onclick="event.preventDefault();
+        <div class="navbar navbar-expand-lg navbar-light"><div class="d-flex flex-1 d-lg-none"><button class="navbar-toggler sidebar-mobile-main-toggle" type="button"><i class="icon-transmission"></i></button></div><div class="navbar-collapse collapse flex-lg-1 order-2 order-lg-1" id="navbar-search"><div class="navbar-search d-flex align-items-center py-2 py-lg-0"></div></div><div class="d-flex justify-content-end align-items-center flex-1 flex-lg-0 order-1 order-lg-2"><ul class="navbar-nav flex-row"><li class="nav-item nav-item-dropdown-lg dropdown dropdown-user"><a href="#" class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle" data-toggle="dropdown"><img src="https://ui-avatars.com/api/?name=L+M&amp;color=7F9CF5&amp;background=EBF4FF" class="rounded-pill mr-lg-2" height="34" alt=""><span class="d-none d-lg-inline-block">Dũng Núi</span></a><div class="dropdown-menu dropdown-menu-right"><a href="https://vulcano.azlink.vn/backend/profile" class="dropdown-item"><i class="icon-user-plus"></i> Hồ sơ</a><div class="dropdown-divider"></div><form method="POST" action="https://vulcano.azlink.vn/logout"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <a href="http://127.0.0.1:8000/logout" class="dropdown-item" onclick="event.preventDefault();
 										this.closest('form').submit();"><i class="icon-switch2"></i> Đăng Xuất</a></form></div></li></ul></div></div>
 
         <!-- Inner content -->
@@ -144,7 +147,7 @@
 
             <!-- Content area -->
             <div class="content">
-
+                @yield('content')
             </div>
             <!-- /content area -->
 

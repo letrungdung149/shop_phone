@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\shop\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('backend')
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+        Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+        Route::post('/categories/editor', [CategoryController::class, 'proccessEditor'])->name('admin.categories.editor');
     });
