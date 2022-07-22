@@ -27,18 +27,6 @@ class CategoryController
                         'delete' => false,
                     ];
 
-                    if (auth()->user()->can('productCares.edit')) {
-                        $can['edit'] = true;
-                    }
-
-                    if (auth()->user()->can('productCares.delete')) {
-                        $can['delete'] = true;
-                    }
-
-                    if (auth()->user()->can('productCares.create')) {
-                        $can['add'] = true;
-                    }
-
                     if ($row->is_system) {
                         $can['delete'] = false;
                     }
@@ -51,23 +39,6 @@ class CategoryController
                 ->formatColumn(['created_at', 'updated_at'], DateFormatter::class)
                 ->toJson();
             $json = $json->getData(true);
-
-            $data = $json['data'];
-
-            $images = Arr::pluck($data, 'image');
-
-            $files = [];
-
-            foreach ($images as $id) {
-                $files['files'][$id] = [
-                    'filename'      => $id,
-                    'directory'     => 'editor',
-                    'disk'          => config('filesystems.default'),
-                    'url'           => Storage::disk(config('filesystems.default'))->url($id),
-                ];
-            }
-
-            $json['files'] = $files;
 
             return response()->json($json);
         }
